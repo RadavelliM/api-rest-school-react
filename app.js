@@ -1,5 +1,11 @@
+import dotenv from "dotenv";
+import path from "path";
+dotenv.config(path.resolve(__dirname, ".env"));
+
 import express from "express";
 import homeRoute from "./src/routes/homeRoute";
+
+import "./src/database/connection";
 
 class App {
   constructor() {

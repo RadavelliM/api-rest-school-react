@@ -3,7 +3,7 @@ class HomeController {
 
   index(req, res) {
     res.status(200).json({
-      chamada: "correta",
+      chamada: "correta"
     });
   }
 }
