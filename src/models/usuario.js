@@ -12,6 +12,10 @@ export default class Usuario extends Model {
             len: {
               args: [3, 255],
               msg: 'Campo "nome" deve ter entre 3 e 255 caracteres.'
+            },
+
+            isAlpha: {
+              msg: "nome nao pode ser um numero"
             }
           }
         },
