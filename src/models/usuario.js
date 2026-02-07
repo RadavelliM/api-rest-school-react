@@ -60,9 +60,14 @@ export default class Usuario extends Model {
     );
 
     this.addHook("beforeSave", async (user) => {
-      if (user.password_hash)
+      if (user.password) {
         user.password_hash = await bcrypt.hash(user.password, 10);
+      }
     });
     return this;
+  }
+
+  static verifyPassword(password, password_hash) {
+    return bcrypt.compare(password, password_hash);
   }
 }
