@@ -57,6 +57,9 @@ export default class Aluno extends Model {
             },
             isNumeric: {
               msg: "idade precisa ser um numero"
+            },
+            isInt: {
+              msg: "idade precisa ser um numero inteiro"
             }
           }
         },
