@@ -13,6 +13,12 @@ class AlunoController {
       });
     }
   }
+
+  async index(req, res) {
+    const alunos = await aluno.findAll();
+
+    res.json(alunos);
+  }
 }
 
 export default new AlunoController();
