@@ -1,0 +1,10 @@
+comandos para as migrations
+
+npx sequelize-cli migration:generate --name {nome da migration}
+npx sequelize-cli db:migrate
+
+npx sequelize seed:generate --name {nome da seed}
+npx sequelize db:seed:all
+
+npx sequelize-cli db:migrate:undo
+npx sequelize-cli db:migrate:undo:all
