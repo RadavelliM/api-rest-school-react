@@ -11,7 +11,8 @@ export default defineConfig([
     rules: {
       // "no-unused-vars": "off",
       // "brace-style": ["error", "stroustrup"]
-      "comma-dangle": "off"
+      "comma-dangle": "off",
+      "import/first": "error"
     }
   }
 ]);
