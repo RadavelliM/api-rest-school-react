@@ -1,4 +1,5 @@
 import aluno from "../models/aluno";
+import foto from "../models/foto";
 
 class AlunoController {
   constructor() {}
@@ -13,7 +14,15 @@ class AlunoController {
         "idade",
         "peso",
         "altura"
-      ]
+      ],
+      order: [
+        ["id", "DESC"],
+        [foto, "id", "DESC"]
+      ],
+      include: {
+        model: foto,
+        attributes: ["id", "originalname", "filename"]
+      }
     });
 
     res.json(alunos);
@@ -26,25 +35,31 @@ class AlunoController {
         return res.status(400).json({ errors: ["ID invalido"] });
       }
 
-      const estudante = await aluno.findByPk(id);
+      const estudante = await aluno.findByPk(id, {
+        attributes: [
+          "id",
+          "nome",
+          "sobrenome",
+          "email",
+          "idade",
+          "peso",
+          "altura"
+        ],
+        order: [
+          ["id", "DESC"],
+          [foto, "id", "DESC"]
+        ],
+        include: {
+          model: foto,
+          attributes: ["id", "originalname", "filename"]
+        }
+      });
 
       if (!estudante) {
         return res.status(404).json({ errors: ["Aluno nao encontrado"] });
       }
 
-      const { idEstudante, nome, sobrenome, email, idade, peso, altura } =
-        estudante;
-      const informacoesEstudante = {
-        idEstudante,
-        nome,
-        sobrenome,
-        email,
-        idade,
-        peso,
-        altura
-      };
-
-      return res.json(informacoesEstudante);
+      return res.json(estudante);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message)
@@ -89,10 +104,8 @@ class AlunoController {
 
       const novoAluno = await estudante.update(req.body);
 
-      const { idEstudante, nome, sobrenome, email, idade, peso, altura } =
-        novoAluno;
+      const { nome, sobrenome, email, idade, peso, altura } = novoAluno;
       const informacoesEstudante = {
-        idEstudante,
         nome,
         sobrenome,
         email,
