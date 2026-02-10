@@ -32,8 +32,8 @@ class UploadController {
           id_aluno
         });
 
-        const { id } = fotoAdicionada;
-        const fotoInfo = { id, originalname, filename, id_aluno };
+        const { id, url } = fotoAdicionada;
+        const fotoInfo = { id, originalname, filename, id_aluno, url };
 
         return res.status(201).json(fotoInfo);
       } catch (e) {

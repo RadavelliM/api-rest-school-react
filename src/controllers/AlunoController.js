@@ -21,7 +21,7 @@ class AlunoController {
       ],
       include: {
         model: foto,
-        attributes: ["id", "originalname", "filename"]
+        attributes: ["id", "originalname", "filename", "url"]
       }
     });
 
@@ -51,7 +51,7 @@ class AlunoController {
         ],
         include: {
           model: foto,
-          attributes: ["id", "originalname", "filename"]
+          attributes: ["id", "originalname", "filename", "url"]
         }
       });
 

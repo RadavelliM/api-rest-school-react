@@ -5,11 +5,16 @@ import loginRequired from "../middlewares/loginRequired";
 const router = new Router();
 
 // ROTAS DESATIVADAS:
-router.get("/", loginRequired, UsuarioController.index);
+// router.get("/", loginRequired, UsuarioController.index);
 // router.get("/:id", UsuarioController.show);
 
-// rotas ativadas
-router.post("/", loginRequired, UsuarioController.create); // rota fechada para criar usuarios para prevenir bot de cadastro após deploy
+// ROTAS ATIVAS:
+
+/*
+    a rota de criacao de contas fica aberto nos commits para o repositorio, mas para o deploy
+    sera fechada devido a bots que podem usar a api e encher o banco de dados
+*/
+router.post("/", UsuarioController.create);
 router.put("/", loginRequired, UsuarioController.update);
 router.delete("/", loginRequired, UsuarioController.delete);
 
