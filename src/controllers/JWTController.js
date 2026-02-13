@@ -29,12 +29,14 @@ class JWTController {
       });
     }
 
-    const { id } = user;
+    const { id, nome } = user;
     const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET_KEY, {
       expiresIn: process.env.TOKEN_EXPIRATION_TIME
     });
 
-    res.json({ token });
+    const Usuario = {id, nome, email}
+
+    res.json({ token, Usuario });
   }
 }
 
