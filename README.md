@@ -5,8 +5,12 @@
 </h2>
 
 
-<h2>
+<h3>
   A API REST conta com o gerencimento completo de uma universidade, permitindo cadastro de alunos, professores, cursos, disciplinas, turmas, e lançamento de notas, além de geração de boletim
+</h3>
+
+<h2 align="center">
+  💻Tecnologias utilizadas:
 </h2>
 
 ### 💻 Backend
